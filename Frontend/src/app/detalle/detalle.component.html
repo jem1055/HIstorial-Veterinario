@@ -1,0 +1,135 @@
+<div class="container-fluid">
+  <br /><br />
+
+  <div class="row ">
+    <div class="col-8 text-center">
+
+      <div class="formularioRegistro ">
+        <h2>Crear Detalles</h2>
+        <form [formGroup]="detalleForm" (ngSubmit)="guardar()">
+
+          <div class="row justify-content-center">
+            <div class="col-4">
+              <label>Temperatura</label>
+              <input type="text" formControlName="temperatura" class="form-control" id="temperatura" />
+
+            </div>
+            <div class="col-4">
+              <label>Peso</label>
+              <input type="number" formControlName="peso" class="form-control" id="peso" />
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-4">
+              <label>Frecuencia Cardiaca</label>
+              <input type="number" formControlName="frecuencia_cardiaca" class="form-control"
+                id="frecuencia_cardiaca" />
+
+            </div>
+            <div class="col-4">
+              <label>Frecuencia Respiratoria</label>
+              <input type="number" formControlName="frecuencia_respiratoria" class="form-control"
+                id="frecuencia_respiratoria" />
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-4">
+              <label>Fecha y Hora</label>
+              <input type="datetime-local" formControlName="fecha_hora" class="form-control" id="fecha_hora" />
+
+            </div>
+            <div class="col-4">
+              <label>Alimentacion</label>
+              <input type="text" formControlName="alimentacion" class="form-control" id="alimentacion" />
+            </div>
+          </div>
+
+          <div class="row justify-content-center">
+            <div class="col-4">
+              <label>Habitad</label>
+              <input type="text" formControlName="habitad" class="form-control" id="habitad" />
+
+            </div>
+            <div class="col-4">
+              <label>Observacion</label>
+              <input type="text" formControlName="observacion" class="form-control" id="observacion" />
+            </div>
+          </div>
+
+
+
+          <div class="row justify-content-center">
+
+            <div class="col-4"> <label>Colaborador</label>
+              <select name="id_colaborador" id="id_colaborador" formControlName="id_colaborador" class="form-control">
+                <option [ngValue]="item" *ngFor="let item of colaboradores">{{item.id}}</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label>Historia Clinca</label>
+              <select name="id_historia_clinica" id="id_historia_clinica" formControlName="id_historia_clinica"
+                class="form-control">
+                <option [ngValue]="item" *ngFor="let item of historias">{{item.id}}</option>
+              </select>
+            </div>
+          </div>
+          <br>
+
+          <button type="submit" class="btn btn-primary" [disabled]="detalleForm.invalid">Guardar</button>
+
+        </form>
+      </div>
+
+      <br>
+
+      <div class=" formularioRegistro ">
+        <h2>Detalles Registrados</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Temperatura</th>
+              <th>Peso</th>
+              <th>F. Cardiaca</th>
+              <th>F. Respiratoria</th>
+              <th>Fecha</th>
+              <th>Alimentacion</th>
+              <th>Habitad</th>
+              <th>Observacion</th>
+              <th>Colaborador</th>
+              <th>Historia Clinica</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of detalles">
+              <th>{{item.id}}</th>
+              <td>{{item.temperatura}}</td>
+              <td>{{item.peso}}</td>
+              <td>{{item.frecuencia_cardiaca}}</td>
+              <td>{{item.frecuencia_respiratoria}}</td>
+              <td>{{item.fecha_hora}}</td>
+              <td>{{item.alimentacion}}</td>
+              <td>{{item.habitad}}</td>
+              <td>{{item.observacion}}</td>
+              <td>{{item.id_colaborador.nombre}} {{item.id_colaborador.apellido}}</td>
+              <td>{{item.id_historia_clinica.id}}</td>
+
+
+
+              <td>
+                <button type="button" class="btn btn-success" (click)="editar(item)">Editar</button>
+
+              </td>
+              <td>
+
+                <button type="button" class="btn btn-danger" (click)="eliminar(item)">Eliminar</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

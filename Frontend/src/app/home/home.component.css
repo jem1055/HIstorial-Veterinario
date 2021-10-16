@@ -1,0 +1,11 @@
+.container {
+  width: 100%;
+  background-image: url(../../assets/img/fondoIndex.png);
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+  height: 650px;
+  left: 150px;
+  position: absolute;
+  margin-bottom: 2rem;
+}
